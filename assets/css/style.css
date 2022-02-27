@@ -1,0 +1,65 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#start-btn {
+  display: block;
+  position: relative;
+  margin: 5px;
+  padding: 10px;
+
+  background-color: black;
+  color: white;
+  border-radius: .4em;
+  border: none;
+
+  font-size: 25px;
+}
+
+#start-btn:hover {
+  background-color: purple;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 0 100px;
+}
+
+main ul li {
+  list-style: none;
+}
+
+#answer-btn {
+  display: block;
+  position: relative;
+  margin: 2px;
+  padding: 5px 100px 5px 5px;
+
+  background-color: black;
+  color: white;
+  border-radius: .4em;
+  border: none;
+
+  font-size: 20px;
+}
+
+#answer-btn:hover {
+  background-color: purple;
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+}
