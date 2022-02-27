@@ -57,10 +57,20 @@ nextQuestion.onclick = ()=>{
     showQuestions(questionCount);
   } else {
     // get initials from user when game is finished
-    var gameOver = prompt("Game Over! Type Your Initials to Save your Score!");
-    console.log(gameOver);
+    gameOver();
   }
 };
+
+var gameOverTrigger = function () {
+  var gameOver = prompt("Game Over! Type Your Initials to Save your Score!");
+  if (gameOver === null || gameOver === "") {
+    alert("Invalid Response! You must submit initials to save your score.")
+    return gameOverTrigger();
+  }
+  console.log(gameOver);
+};
+
+
 
 // get the questions and choices from the array
 function showQuestions() {
@@ -79,13 +89,13 @@ function showQuestions() {
 
 
 function countdownTimer () {
-  var timeLeft = 60;
+  var timeLeft = 10;
   var timeInterval = setInterval(function () {
     timerEl.textContent = timeLeft;
     timeLeft--;
     if (timeLeft === 0) {
       clearInterval(timeInterval);
-      alert("You have run out of time!");
+      gameOverTrigger();
     }
   }, 1000);
 };
@@ -93,4 +103,4 @@ function countdownTimer () {
 
 
 startButtonEl.addEventListener("click", showQuestions);
-// startButtonEl.addEventListener("click", countdownTimer)
+startButtonEl.addEventListener("click", countdownTimer)
