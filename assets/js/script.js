@@ -2,11 +2,30 @@ var startButtonEl = document.querySelector("#start-btn");
 var questionEl = document.querySelector("#question-box");
 var timerEl = document.getElementById('countdown');
 
-// storing question number, text and choices in an array
+// storing question text and choices in an array
 var questions = [
   {
-    number: 1,
-    question: "This is going to be my first question?",
+    question: "Commonly used data types do NOT include:",
+    answer: "this is the Answer",
+    choices: [
+      "Answer",
+      "Answer",
+      "this is the Answer",
+      "Answer"
+    ]
+  },
+  {
+    question: "The condition in an if/else statement is enclosed with:",
+    answer: "this is the Answer",
+    choices: [
+      "this is the Answer",
+      "Answer",
+      "Answer",
+      "Answer"
+    ]
+  },
+  {
+    question: "Arrays in javascript can be used to store?",
     answer: "this is the Answer",
     choices: [
       "Answer",
@@ -16,47 +35,44 @@ var questions = [
     ]
   },
   {
-    number: 2,
-    question: "This is going to be my second question?",
+    question: "String Values must be enclosed within _____ when being assigned to variables",
     answer: "this is the Answer",
     choices: [
       "Answer",
-      "this is the Answer",
       "Answer",
-      "Answer"
-    ]
-  },
-  {
-    number: 3,
-    question: "This is going to be my third question?",
-    answer: "this is the Answer",
-    choices: [
       "Answer",
-      "this is the Answer",
-      "Answer",
-      "Answer"
-    ]
-  },
-  {
-    number: 4,
-    question: "This is going to be my fourth question?",
-    answer: "this is the Answer",
-    choices: [
-      "Answer",
-      "this is the Answer",
-      "Answer",
-      "Answer"
+      "this is the Answer"
     ]
   },
 ];
 
 var questionCount = 0;
 
+var nextQuestion = questionEl.querySelector(".choices-list");
+
+nextQuestion.onclick = ()=>{
+  // cycle through question loop
+  if(questionCount < questions.length - 1){
+    questionCount++;
+    showQuestions(questionCount);
+  } else {
+    // get initials from user when game is finished
+    var gameOver = prompt("Game Over! Type Your Initials to Save your Score!");
+    console.log(gameOver);
+  }
+};
+
 // get the questions and choices from the array
-function showQuestions() {
+function showQuestions(index) {
   var questionText = document.querySelector(".question-text");
-  var questionInfo = "<h2>" + questions[0].question + "</h2>";
+  var choicesList = document.querySelector(".choices-list");
+  var questionInfo = "<h2>" + questions[index].question + "</h2>";
+  var choicesInfo = "<li>" + questions[index].choices[0] + "</li>"
+                    + "<li>" + questions[index].choices[1] + "</li>"
+                    + "<li>" + questions[index].choices[2] + "</li>"
+                    + "<li>" + questions[index].choices[3] + "</li>";
   questionText.innerHTML = questionInfo;
+  choicesList.innerHTML = choicesInfo;
 }
 
 
@@ -73,41 +89,7 @@ function countdownTimer () {
   }, 1000);
 };
 
-// var questionStart = function() {
 
-//   // question element
-//   var questionText = document.createElement("div");
-//   questionText.className = "question-box";
-//   questionText.innerHTML = "<h2 class='question-text'>" + questionObj + "</h2>";
-//   questionEl.appendChild(questionText);
 
-  
-//   // answer element pop up below question
-//   var answerList = document.createElement("ul");
-//   answerList.className = "answer-list";
-//   questionText.appendChild(answerList);
-
-//   var answerOne = document.createElement("li");
-//   answerOne.className = "answer-list";
-//   answerOne.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
-//   answerList.appendChild(answerOne);
-
-//   var answerTwo = document.createElement("li");
-//   answerTwo.className = "answer-list";
-//   answerTwo.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
-//   answerList.appendChild(answerTwo);
-
-//   var answerThree = document.createElement("li");
-//   answerThree.className = "answer-list";
-//   answerThree.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
-//   answerList.appendChild(answerThree);
-
-//   var answerFour = document.createElement("li");
-//   answerFour.className = "answer-list";
-//   answerFour.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
-//   answerList.appendChild(answerFour);
-
-}
-
-startButtonEl.addEventListener("click", showQuestions)
+startButtonEl.addEventListener("click", showQuestions(0));
 // startButtonEl.addEventListener("click", countdownTimer)

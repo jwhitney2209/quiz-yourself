@@ -32,33 +32,56 @@ header {
 
 main {
   display: flex;
-  justify-content: center;
-  flex-direction: row;
-  margin: 0 100px;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 200px;
 }
 
 main ul li {
   list-style: none;
+  background-color: black;
+  color: white;
+  margin: 2px 0;
+  padding: 5px;
+  border-radius: .4em;
+  font-size: 20px;
+  width: 250px;
 }
+
+main ul li:hover {
+  background-color: purple;
+}
+
+.question-text {
+  font-size: 20px;
+}
+
+.choices-list {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+
 
 #answer-btn {
   display: block;
   position: relative;
-  margin: 2px;
-  padding: 5px 100px 5px 5px;
-
+  border: none;
   background-color: black;
   color: white;
   border-radius: .4em;
-  border: none;
-
+  margin: 2px;
+  padding: 5px 5px 5px 5px;
   font-size: 20px;
+  width: 100%;
 }
+
 
 #answer-btn:hover {
   background-color: purple;
 }
-
 #countdown {
   display: flex;
   justify-content: center;
