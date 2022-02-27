@@ -63,16 +63,17 @@ nextQuestion.onclick = ()=>{
 };
 
 // get the questions and choices from the array
-function showQuestions(index) {
+function showQuestions() {
   var questionText = document.querySelector(".question-text");
   var choicesList = document.querySelector(".choices-list");
-  var questionInfo = "<h2>" + questions[index].question + "</h2>";
-  var choicesInfo = "<li>" + questions[index].choices[0] + "</li>"
-                    + "<li>" + questions[index].choices[1] + "</li>"
-                    + "<li>" + questions[index].choices[2] + "</li>"
-                    + "<li>" + questions[index].choices[3] + "</li>";
+  var questionInfo = "<h2>" + questions[questionCount].question + "</h2>";
+  var choicesInfo = "<li>" + questions[questionCount].choices[0] + "</li>"
+                    + "<li>" + questions[questionCount].choices[1] + "</li>"
+                    + "<li>" + questions[questionCount].choices[2] + "</li>"
+                    + "<li>" + questions[questionCount].choices[3] + "</li>";
   questionText.innerHTML = questionInfo;
   choicesList.innerHTML = choicesInfo;
+
 }
 
 
@@ -91,5 +92,5 @@ function countdownTimer () {
 
 
 
-startButtonEl.addEventListener("click", showQuestions(0));
+startButtonEl.addEventListener("click", showQuestions);
 // startButtonEl.addEventListener("click", countdownTimer)
