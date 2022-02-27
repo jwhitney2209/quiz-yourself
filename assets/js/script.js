@@ -2,21 +2,64 @@ var startButtonEl = document.querySelector("#start-btn");
 var questionEl = document.querySelector("#question-box");
 var timerEl = document.getElementById('countdown');
 
-
-var quizData = {
-    question: [
-    "Question 1 is going to be this really long question ___________", 
-    "Question 2 is going to be another really long question ___________", 
-    "Question 3", 
-    "Question 4"
-  ],
+// storing question number, text and choices in an array
+var questions = [
+  {
+    number: 1,
+    question: "This is going to be my first question?",
+    answer: "this is the Answer",
     choices: [
-    "1. Answer", 
-    "2. Answer", 
-    "3. Answer", 
-    "4. Answer"
-  ]
-  };
+      "Answer",
+      "this is the Answer",
+      "Answer",
+      "Answer"
+    ]
+  },
+  {
+    number: 2,
+    question: "This is going to be my second question?",
+    answer: "this is the Answer",
+    choices: [
+      "Answer",
+      "this is the Answer",
+      "Answer",
+      "Answer"
+    ]
+  },
+  {
+    number: 3,
+    question: "This is going to be my third question?",
+    answer: "this is the Answer",
+    choices: [
+      "Answer",
+      "this is the Answer",
+      "Answer",
+      "Answer"
+    ]
+  },
+  {
+    number: 4,
+    question: "This is going to be my fourth question?",
+    answer: "this is the Answer",
+    choices: [
+      "Answer",
+      "this is the Answer",
+      "Answer",
+      "Answer"
+    ]
+  },
+];
+
+var questionCount = 0;
+
+// get the questions and choices from the array
+function showQuestions() {
+  var questionText = document.querySelector(".question-text");
+  var questionInfo = "<h2>" + questions[0].question + "</h2>";
+  questionText.innerHTML = questionInfo;
+}
+
+
 
 function countdownTimer () {
   var timeLeft = 60;
@@ -30,41 +73,41 @@ function countdownTimer () {
   }, 1000);
 };
 
-var questionStart = function() {
-  // question element
-  var questionText = document.createElement("div");
-  questionText.className = "question-box";
-  questionText.innerHTML = "<h2 class='question-text'>" + quizData.question[0] + "</h2>";
-  questionEl.appendChild(questionText);
-  console.log(questionText);
+// var questionStart = function() {
 
+//   // question element
+//   var questionText = document.createElement("div");
+//   questionText.className = "question-box";
+//   questionText.innerHTML = "<h2 class='question-text'>" + questionObj + "</h2>";
+//   questionEl.appendChild(questionText);
 
-  // answer element pop up below question
-  var answerList = document.createElement("ul");
-  answerList.className = "answer-list";
-  questionText.appendChild(answerList);
+  
+//   // answer element pop up below question
+//   var answerList = document.createElement("ul");
+//   answerList.className = "answer-list";
+//   questionText.appendChild(answerList);
 
-  var answerOne = document.createElement("li");
-  answerOne.className = "answer-list";
-  answerOne.innerHTML = "<button id='answer-btn'>" + quizData.choices[0] + "</button>";
-  answerList.appendChild(answerOne);
+//   var answerOne = document.createElement("li");
+//   answerOne.className = "answer-list";
+//   answerOne.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
+//   answerList.appendChild(answerOne);
 
-  var answerTwo = document.createElement("li");
-  answerTwo.className = "answer-list";
-  answerTwo.innerHTML = "<button id='answer-btn'>" + quizQuestions.choices[1] + "</button>";
-  answerList.appendChild(answerTwo);
+//   var answerTwo = document.createElement("li");
+//   answerTwo.className = "answer-list";
+//   answerTwo.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
+//   answerList.appendChild(answerTwo);
 
-  var answerThree = document.createElement("li");
-  answerThree.className = "answer-list";
-  answerThree.innerHTML = "<button id='answer-btn'>" + quizQuestions.choices[2] + "</button>";
-  answerList.appendChild(answerThree);
+//   var answerThree = document.createElement("li");
+//   answerThree.className = "answer-list";
+//   answerThree.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
+//   answerList.appendChild(answerThree);
 
-  var answerFour = document.createElement("li");
-  answerFour.className = "answer-list";
-  answerFour.innerHTML = "<button id='answer-btn'>" + quizQuestions.choices[3] + "</button>";
-  answerList.appendChild(answerFour);
+//   var answerFour = document.createElement("li");
+//   answerFour.className = "answer-list";
+//   answerFour.innerHTML = "<button id='answer-btn'>" + quizData.choices + "</button>";
+//   answerList.appendChild(answerFour);
 
 }
 
-startButtonEl.addEventListener("click", questionStart)
+startButtonEl.addEventListener("click", showQuestions)
 // startButtonEl.addEventListener("click", countdownTimer)
