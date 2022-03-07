@@ -2,9 +2,19 @@ var startButtonEl = document.querySelector("#start-btn");
 var questionEl = document.querySelector("#question-box");
 var timerEl = document.getElementById('countdown');
 
-var timer = 60;
-var intialsArr = [];
+var timer = 10;
+var initialsArr = [];
 var highscoresArr = [];
+var userInitials = '';
+
+var highScore = {
+  initials: userInitials,
+  score: timer
+};
+
+var questionCount = 0;
+
+var nextQuestion = questionEl.querySelector(".choices-list");
 
 // storing question text and choices in an array
 var questions = [
@@ -50,9 +60,9 @@ var questions = [
   },
 ];
 
-var questionCount = 0;
-
-var nextQuestion = questionEl.querySelector(".choices-list");
+var saveScores = function () {
+  localStorage.setItem("save", JSON.stringify(userInitials));
+}
 
 nextQuestion.onclick = ()=>{
   // cycle through question loop
@@ -66,17 +76,15 @@ nextQuestion.onclick = ()=>{
 };
 
 var gameOverTrigger = function () {
-  var gameOver = prompt("Game Over! Type Your Initials to Save your Score!");
-  if (gameOver === null || gameOver === "") {
+  var userInitials = prompt("Game Over! Type Your Initials to Save your Score!");
+  if (userInitials === null || userInitials === "") {
     alert("Invalid Response! You must submit initials to save your score.")
     return gameOverTrigger();
   }
-
+  saveScores(userInitials);
+  console.log(initialsArr);
   window.location.reload();
-  console.log(gameOver);
 };
-
-
 
 // get the questions and choices from the array
 function showQuestions() {
@@ -89,17 +97,9 @@ function showQuestions() {
                     + "<li>" + questions[questionCount].choices[3] + "</li>";
   questionText.innerHTML = questionInfo;
   choicesList.innerHTML = choicesInfo;
-
 };
 
-// triggers correct message when correct choice is chosen
-
-// triggers incorrect message when wrong choice is chosen
-
-// add to timer when answer is correct
-
 // subtract from timer when answer is incorrect
-
 
 function countdownTimer () {
   var timeLeft = timer;
@@ -107,7 +107,9 @@ function countdownTimer () {
     timeLeft--;
     timerEl.textContent = timeLeft;
     if (timeLeft === 0) {
-      clearInterval(timeInterval);
+      clearInterval(timeInterval)
+      timeLeft.textContent = "0";
+      gameOverTrigger();
     }
   }, 1000);
 };
