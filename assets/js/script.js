@@ -2,7 +2,7 @@ var startButtonEl = document.querySelector("#start-btn");
 var questionEl = document.querySelector("#question-box");
 var timerEl = document.getElementById('countdown');
 
-var timer = 10;
+var timer = 60;
 var initialsArr = [];
 var highscoresArr = [];
 var userInitials = '';
