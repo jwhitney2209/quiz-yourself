@@ -2,6 +2,10 @@ var startButtonEl = document.querySelector("#start-btn");
 var questionEl = document.querySelector("#question-box");
 var timerEl = document.getElementById('countdown');
 
+var timer = 60;
+var intialsArr = [];
+var highscoresArr = [];
+
 // storing question text and choices in an array
 var questions = [
   {
@@ -57,7 +61,7 @@ nextQuestion.onclick = ()=>{
     showQuestions(questionCount);
   } else {
     // get initials from user when game is finished
-    gameOver();
+    gameOverTrigger();
   }
 };
 
@@ -67,6 +71,8 @@ var gameOverTrigger = function () {
     alert("Invalid Response! You must submit initials to save your score.")
     return gameOverTrigger();
   }
+
+  window.location.reload();
   console.log(gameOver);
 };
 
@@ -84,23 +90,29 @@ function showQuestions() {
   questionText.innerHTML = questionInfo;
   choicesList.innerHTML = choicesInfo;
 
-}
+};
 
+// triggers correct message when correct choice is chosen
+
+// triggers incorrect message when wrong choice is chosen
+
+// add to timer when answer is correct
+
+// subtract from timer when answer is incorrect
 
 
 function countdownTimer () {
-  var timeLeft = 10;
+  var timeLeft = timer;
   var timeInterval = setInterval(function () {
-    timerEl.textContent = timeLeft;
     timeLeft--;
+    timerEl.textContent = timeLeft;
     if (timeLeft === 0) {
       clearInterval(timeInterval);
-      gameOverTrigger();
     }
   }, 1000);
 };
 
-
+// take timer and store as score 
 
 startButtonEl.addEventListener("click", showQuestions);
 startButtonEl.addEventListener("click", countdownTimer)
