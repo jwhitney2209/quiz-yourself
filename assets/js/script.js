@@ -3,14 +3,6 @@ var questionEl = document.querySelector("#question-box");
 var timerEl = document.getElementById('countdown');
 
 var timer = 60;
-var initialsArr = [];
-var highscoresArr = [];
-var userInitials = '';
-
-var highScore = {
-  initials: userInitials,
-  score: timer
-};
 
 var questionCount = 0;
 
